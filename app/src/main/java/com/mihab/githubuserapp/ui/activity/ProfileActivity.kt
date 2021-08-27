@@ -117,8 +117,8 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.home -> {
-                finish()
+            android.R.id.home -> {
+                onBackPressed()
                 return true
             }
         }

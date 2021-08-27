@@ -1,10 +1,12 @@
 package com.mihab.githubuserapp.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.mihab.githubuserapp.R
 import com.mihab.githubuserapp.data.model.User
 import com.mihab.githubuserapp.databinding.ItemUserBinding
 import com.squareup.picasso.NetworkPolicy
@@ -43,7 +45,18 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         holder.binding.apply {
             val user = users[position]
 
-            Picasso.get().load(user.avatar_url).into(civProPic)
+            var everyForthItem = position + 3
+
+            if (everyForthItem % 3 == 0) {
+                if (position != 0) {
+                    civProPic.borderColor = Color.parseColor("#ffffff")
+                }
+                Picasso.get().load(user.avatar_url).into(civProPic)
+            } else {
+                Picasso.get().load(user.avatar_url).into(civProPic)
+            }
+
+
             tvName.text = user.login
             tvProfileUrl.text = user.url
 
